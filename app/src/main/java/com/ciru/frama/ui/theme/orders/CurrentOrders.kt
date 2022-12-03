@@ -12,10 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ciru.frama.ui.screens.orders.CurrentOrderItems
 import com.ciru.frama.ui.theme.LightBlueWhite
+import com.ciru.frama.ui.theme.home.HomePage
 
 @Composable
 fun CurrentOrders() {
@@ -40,7 +42,9 @@ fun CurrentOrderBody(currentOrderItems: List<CurrentOrderItems>) {
 fun CurrentOrderData(currentOrderItems: CurrentOrderItems) {
         Card(
         elevation = 6.dp,
-        modifier = Modifier.clip(RoundedCornerShape(10.dp)).background(LightBlueWhite)
+        modifier = Modifier
+            .clip(RoundedCornerShape(10.dp))
+            .background(LightBlueWhite)
     ) {
         Row(horizontalArrangement = Arrangement.SpaceEvenly) {
             Image(
@@ -60,4 +64,10 @@ fun CurrentOrderData(currentOrderItems: CurrentOrderItems) {
             )
         }
     }
+}
+
+@Preview(showSystemUi=true, showBackground = true, )
+@Composable
+fun OrdersPreview(){
+    CurrentOrders()
 }

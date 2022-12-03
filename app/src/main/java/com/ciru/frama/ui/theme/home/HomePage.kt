@@ -130,7 +130,28 @@ private fun BackdropMenuItems() {
 
 @Composable
 fun MenuItem() {
-// settings, notification, customer Support
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        Button(onClick = { /*TODO*/ }) {
+            Text(
+                text = "Notifications"
+            )
+        }
+        Button(onClick = { /*TODO*/ }) {
+           Text(text = "Settings") 
+        }
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Account")
+        }
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Orders")
+        }
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Sign In")
+        }
+    }
 }
 
 
@@ -155,7 +176,8 @@ fun FrontPageCard(homeItems: HomeItems) {
         modifier = Modifier
             .wrapContentSize()
             .height(homeItems.size)
-            .clickable {  }
+            .wrapContentWidth()
+            .clickable { }
     ) {
         Column(
             modifier = Modifier

@@ -4,10 +4,7 @@ package com.ciru.frama.ui.theme.account
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,7 +16,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ciru.frama.R
 import com.ciru.frama.ui.theme.BlueWhite
+import com.ciru.frama.ui.theme.BlueWhiteDark
 import com.ciru.frama.ui.theme.FramaTheme
+import com.ciru.frama.ui.theme.LightBlueWhite
 
 @Composable
 fun AccountPage() {
@@ -38,6 +37,16 @@ fun AccountPage() {
             BasicInfo()
             Spacer(modifier = Modifier.padding(20.dp))
             SecurityInfo()
+        }
+        Button(
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp)
+                .align(Alignment.BottomCenter),
+            colors = ButtonDefaults.buttonColors(BlueWhiteDark)
+        ) {
+           Text(text = "Log Out", color = Color.White)
         }
     }
 }

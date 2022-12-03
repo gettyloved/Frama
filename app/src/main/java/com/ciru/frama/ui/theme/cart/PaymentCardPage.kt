@@ -22,7 +22,7 @@ import com.ciru.frama.ui.theme.FramaTheme
 import com.ciru.frama.ui.theme.LightBlueWhite
 
 @Composable
-fun CardPage() {
+fun PaymentCardPage() {
     Box(Modifier.fillMaxSize()
     ) {
        Column(
@@ -194,6 +194,6 @@ fun ProceedButton() {
 @Composable
 fun CardPreview() {
     FramaTheme {
-        CardPage()
+        PaymentCardPage()
     }
 }

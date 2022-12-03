@@ -1,10 +1,11 @@
 @file:OptIn(ExperimentalMaterialApi::class, ExperimentalMaterialApi::class,
-    ExperimentalFoundationApi::class
+    ExperimentalFoundationApi::class, ExperimentalMaterialApi::class
 )
 
 package com.ciru.frama.ui.theme.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
@@ -18,9 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ciru.frama.R
+import com.ciru.frama.ui.theme.BlueWhiteDark
 import kotlinx.coroutines.launch
 
 @Composable
@@ -47,7 +50,7 @@ fun HomePage() {
                             },
                         tint = Color.White
                     )
-                    Text(text = "Frama", color = Color.White)
+                    Text(text = "Frama", color = Color.White, modifier = Modifier.padding(5.dp))
                 },
                 actions = {
                     Icon(
@@ -60,7 +63,50 @@ fun HomePage() {
             ) 
         },
         frontLayerContent = {
-            FrontPage()
+            FrontPage(homeItems = listOf(
+                HomeItems(
+                    R.drawable.tshirt,
+                    "Wash & Fold",
+                    "$28",
+                    170.dp
+                ),
+                HomeItems(
+                    R.drawable.tshirt,
+                    "Wash & Fold",
+                    "$28",
+                    190.dp
+                ),
+                HomeItems(
+                    R.drawable.tshirt,
+                    "Wash & Fold",
+                    "$28",
+                    200.dp
+                ),
+                HomeItems(
+                    R.drawable.tshirt,
+                    "Wash & Fold",
+                    "$28",
+                    250.dp
+                ),
+                HomeItems(
+                    R.drawable.tshirt,
+                    "Wash & Fold",
+                    "$28",
+                    230.dp
+                ),
+                HomeItems(
+                    R.drawable.tshirt,
+                    "Wash & Fold",
+                    "$28",
+                    240.dp
+                ),
+                HomeItems(
+                    R.drawable.tshirt,
+                    "Wash & Fold",
+                    "$28",
+                    270.dp
+                ),
+            ))
         },
         backLayerContent = {
             BackdropMenuItems()
@@ -89,13 +135,48 @@ fun MenuItem() {
 
 
 @Composable
-fun FrontPage() {
+fun FrontPage(homeItems: List<HomeItems>) {
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Fixed(2),
         contentPadding = PaddingValues(5.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ){}
+    ){
+        items(homeItems.size){
+            FrontPageCard(homeItems = homeItems[it])
+        }
+    }
+}
+
+@Composable
+fun FrontPageCard(homeItems: HomeItems) {
+    Card(
+        elevation = 10.dp,
+        modifier = Modifier
+            .wrapContentSize()
+            .height(homeItems.size)
+            .clickable {  }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Image(
+                painter = painterResource(id = homeItems.image),
+                contentDescription ="service",
+                modifier = Modifier.fillMaxWidth()
+            )
+            Text(
+                text = homeItems.title,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = homeItems.subTitle,
+                color = BlueWhiteDark
+            )
+        }
+
+    }
 }
 
 

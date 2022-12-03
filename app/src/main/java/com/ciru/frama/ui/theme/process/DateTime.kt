@@ -23,19 +23,27 @@ fun DateTime() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(15.dp)
+                .padding(10.dp)
         ) {
-            Text(text = "Select Your Schedule", fontWeight = FontWeight.Bold, fontSize = 25.sp)
+            Text(
+                text = "Select Your Schedule",
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp
+            )
             Spacer(modifier = Modifier.padding(10.dp))
            PickUpDateNTime()
+            Spacer(modifier = Modifier.padding(10.dp))
            DeliveryDateNTime()
-            Button(
-                onClick = { /*TODO*/ },
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(BlueWhiteDark)
-            ) {
-                Text(text = "Continue to Payment", color = Color.White)
-            }
+        }
+        Button(
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+                .align(Alignment.BottomCenter),
+            colors = ButtonDefaults.buttonColors(BlueWhiteDark)
+        ) {
+            Text(text = "Continue to Payment", color = Color.White)
         }
     }
 }
@@ -62,16 +70,19 @@ fun PickUpDateNTime() {
         }
         Spacer(modifier = Modifier.padding(10.dp))
         LazyRow(
-            contentPadding = PaddingValues(10.dp)
+            contentPadding = PaddingValues(vertical = 10.dp)
         ){
             items(10){
                 PickUpDateCard()
             }
         }
         Spacer(modifier = Modifier.padding(10.dp))
-        Text(text = "Pickup Time", fontWeight = FontWeight.Bold)
+        Text(
+            text = "Pickup Time",
+            fontWeight = FontWeight.Bold
+        )
         LazyRow(
-            contentPadding = PaddingValues(10.dp)
+            contentPadding = PaddingValues(vertical = 10.dp)
         ){
             items(10){
                 PickUpTimeCard()
@@ -84,12 +95,12 @@ fun PickUpDateNTime() {
 fun PickUpTimeCard() {
     Card(
         elevation = 10.dp,
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier.padding(end = 10.dp)
     ) {
        Row(
            horizontalArrangement = Arrangement.Center,
            verticalAlignment = Alignment.CenterVertically,
-           modifier = Modifier.padding(horizontal = 10.dp)
+           modifier = Modifier.padding(vertical = 8.dp, horizontal = 15.dp)
        ){
            Text(text = "0800 hrs - 1000 hrs", fontWeight = FontWeight.Bold)
        }
@@ -100,19 +111,18 @@ fun PickUpTimeCard() {
 fun PickUpDateCard() {
     Card(
         elevation = 10.dp,
-        modifier = Modifier
-            .padding(10.dp)
-            .wrapContentSize()
+        modifier = Modifier.padding(end = 10.dp)
     ) {
        Column(
-           horizontalAlignment = Alignment.CenterHorizontally,
-           modifier = Modifier.padding(horizontal = 10.dp)
+           verticalArrangement = Arrangement.Center,
+           modifier = Modifier.padding(vertical = 8.dp, horizontal = 15.dp)
        ) {
            Text(text ="9" , fontWeight = FontWeight.Bold)
            Text(text ="Fri" , fontWeight = FontWeight.Bold)
        }
     }
 }
+
 
 
 @Composable
@@ -137,16 +147,19 @@ fun DeliveryDateNTime() {
         }
         Spacer(modifier = Modifier.padding(10.dp))
         LazyRow(
-            contentPadding = PaddingValues(10.dp)
+            contentPadding = PaddingValues(vertical = 10.dp)
         ){
             items(10){
                 DeliveryDateCard()
             }
         }
         Spacer(modifier = Modifier.padding(10.dp))
-        Text(text = "Pickup Time", fontWeight = FontWeight.Bold)
+        Text(
+            text = "Pickup Time",
+            fontWeight = FontWeight.Bold
+        )
         LazyRow(
-            contentPadding = PaddingValues(10.dp)
+            contentPadding = PaddingValues(vertical = 10.dp)
         ){
             items(10){
                 DeliveryTimeCard()
@@ -158,11 +171,13 @@ fun DeliveryDateNTime() {
 @Composable
 fun DeliveryTimeCard() {
     Card(
-        elevation = 10.dp
+        elevation = 10.dp,
+        modifier = Modifier.padding(end = 10.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(vertical = 8.dp, horizontal = 15.dp)
         ){
             Text(text = "0800 hrs - 1000 hrs", fontWeight = FontWeight.Bold)
         }
@@ -173,18 +188,18 @@ fun DeliveryTimeCard() {
 fun DeliveryDateCard() {
     Card(
         elevation = 10.dp,
-        modifier = Modifier
-            .padding(horizontal = 30.dp)
-            .wrapContentSize()
+        modifier = Modifier.padding(end = 10.dp)
     ) {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(vertical = 8.dp, horizontal = 15.dp)
         ) {
             Text(text ="9" , fontWeight = FontWeight.Bold)
             Text(text ="Fri" , fontWeight = FontWeight.Bold)
         }
     }
 }
+
 
 
 @Preview(showBackground = true)
@@ -194,3 +209,4 @@ fun DatePagePreview() {
         DateTime()
     }
 }
+

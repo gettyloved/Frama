@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ciru.frama.R
 import com.ciru.frama.ui.theme.BlueWhite
 import com.ciru.frama.ui.theme.BlueWhiteDark
@@ -60,8 +61,16 @@ fun NameColumn() {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Box(modifier = Modifier
                 .clip(CircleShape)
+                .size(100.dp)
                 .background(BlueWhite)) {
-                Text(text = "G", color = Color.White, modifier = Modifier.padding(10.dp))
+                Text(
+                    text = "G",
+                    color = Color.White,
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .align(Alignment.Center),
+                    fontSize = 30.sp
+                )
             }
             Text(text = "Gibson Ruitiari")
             Text(text = "gibsonruitiari@gmail.com")

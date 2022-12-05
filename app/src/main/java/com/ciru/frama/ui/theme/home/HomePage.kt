@@ -6,6 +6,7 @@ package com.ciru.frama.ui.theme.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
@@ -24,6 +25,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ciru.frama.R
 import com.ciru.frama.ui.theme.BlueWhiteDark
+import com.ciru.frama.ui.theme.Orange
+import com.ciru.frama.ui.theme.background
 import kotlinx.coroutines.launch
 
 @Composable
@@ -52,14 +55,7 @@ fun HomePage() {
                     )
                     Text(text = "Frama", color = Color.White, modifier = Modifier.padding(5.dp))
                 },
-                actions = {
-                    Icon(
-                        imageVector = Icons.Default.Search ,
-                        contentDescription = "search",
-                        Modifier.size(20.dp),
-                        tint = Color.White
-                    )
-                }
+                backgroundColor = Color.Blue
             ) 
         },
         frontLayerContent = {
@@ -119,6 +115,7 @@ private fun BackdropMenuItems() {
     Column(
         Modifier
             .fillMaxWidth()
+            .background(Color.White)
             .padding(30.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -127,33 +124,59 @@ private fun BackdropMenuItems() {
     }
 }
 
-
 @Composable
 fun MenuItem() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        Button(onClick = { /*TODO*/ }) {
+        Button(
+            onClick = { /*TODO*/ },
+            colors = ButtonDefaults.buttonColors(Color.Blue),
+            modifier = Modifier.fillMaxWidth()
+        ) {
             Text(
                 text = "Notifications"
             )
         }
-        Button(onClick = { /*TODO*/ }) {
-           Text(text = "Settings") 
+        Button(
+            onClick = { /*TODO*/ },
+            colors = ButtonDefaults.buttonColors(Color.Blue),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Settings"
+            )
         }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Account")
+        Button(
+            onClick = { /*TODO*/ },
+            colors = ButtonDefaults.buttonColors(Color.Blue),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Account"
+            )
         }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Orders")
+        Button(
+            onClick = { /*TODO*/ },
+            colors = ButtonDefaults.buttonColors(Color.Blue),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Orders"
+            )
         }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Sign In")
+        Button(
+            onClick = { /*TODO*/ },
+            colors = ButtonDefaults.buttonColors(Color.Blue),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Sign In"
+            )
         }
     }
 }
-
 
 @Composable
 fun FrontPage(homeItems: List<HomeItems>) {

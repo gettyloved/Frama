@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,6 +24,7 @@ import com.ciru.frama.R
 import com.ciru.frama.ui.theme.BlueWhiteDark
 import com.ciru.frama.ui.theme.FramaTheme
 import com.ciru.frama.ui.theme.LightBlueWhite
+import com.ciru.frama.ui.theme.Orange
 
 @Composable
 fun Cart() {
@@ -73,20 +75,16 @@ fun Cart() {
 fun CartHeading() {
     Row(
        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 10.dp)
+            .padding(top = 10.dp),
+        horizontalArrangement = Arrangement.Center
     ) {
         Text(
             text = stringResource(R.string.cart_heading),
             fontSize = 25.sp,
-            fontWeight = FontWeight.Bold
-        )
-        Image(
-            painter = painterResource(id = R.drawable.ic_baseline_cancel_24),
-            contentDescription = "Cancel",
-            colorFilter = ColorFilter.tint(BlueWhiteDark)
+            fontWeight = FontWeight.Bold,
+            color = Orange
         )
     }
 }
@@ -214,17 +212,17 @@ fun TotalSection() {
         }
         Spacer(modifier = Modifier.padding(10.dp))
         Button(
-            onClick = { 
+            onClick = {
 //                checks out. goes to the payment method
             },
             modifier = Modifier
                 .fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
-                BlueWhiteDark
+                Orange
             )
         ) {
             Text(
-                text = stringResource(R.string.proceed_to_checkout),
+                text = "Schedule Pickup",
                 color = Color.White
             )
         }

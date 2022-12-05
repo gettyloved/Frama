@@ -2,10 +2,6 @@
 
 package com.ciru.frama.ui.theme.welcome
 
-
-
-
-
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -33,50 +29,59 @@ fun LandingPage() {
     val items = listOf(
         LandingInput(
             R.drawable.order,
-            "Choose Your Clothes",
-            "Wash It Laundry Service app UI Kit comes with an option to showcase type of services, place order and track order progress interface, with nice d Read More"
+            "Choose The Service",
+            "Get to choose the kind of service that suits your laundry most"
         ),
         LandingInput(
             R.drawable.order,
             "Schedule Pickup",
-            "Wash It Laundry Service app UI Kit comes with an option to showcase type of services, place order and track order progress interface, with nice d Read More"
+            "Get your laundry picked at your most convenience without leaving the comfort of your home"
         ),
         LandingInput(
             R.drawable.order,
-            "Get Top Washing Facilities",
-            "Wash It Laundry Service app UI Kit comes with an option to showcase type of services, place order and track order progress interface, with nice d Read More"
+            "Top Washing Facilities",
+            "We are equipped with the best top of the state washing facilities to ensure your clothes are safe with us all the time"
         ),
         LandingInput(
             R.drawable.order,
-            "Get On Time Delivery",
-            "Wash It Laundry Service app UI Kit comes with an option to showcase type of services, place order and track order progress interface, with nice d Read More"
+            "On Time Delivery",
+            "Get your laundry delivered to you as soon as they are done cleaning without leaving the house"
         ),
         LandingInput(
             R.drawable.order,
             "Pay Later",
-            "Wash It Laundry Service app UI Kit comes with an option to showcase type of services, place order and track order progress interface, with nice d Read More"
+            "You can pay for your laundry once you're satisfied with our services."
         )
     )
-
-
     val pagerState = rememberPagerState()
-    
-    Column(modifier = Modifier.fillMaxSize()) {
-        HorizontalPager(
-            count = 5,
-            state = pagerState
-        ) { position ->
-            LandingScreen(landingInput = items[position])
-        }
-        HorizontalPagerIndicator(
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            pagerState = pagerState,
-            activeColor = Orange
-        )
-        FinishButton(modifier = Modifier,pagerState = pagerState){
 
+    Box(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .align(Alignment.Center),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            HorizontalPager(
+                count = 5,
+                state = pagerState
+            ) { position ->
+                LandingScreen(landingInput = items[position])
+            }
+            Spacer(modifier = Modifier.padding(10.dp))
+            HorizontalPagerIndicator(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                pagerState = pagerState,
+                activeColor = Orange
+            )
+            Spacer(modifier = Modifier.padding(10.dp))
+            FinishButton(modifier = Modifier,pagerState = pagerState){
+
+            }
         }
     }
+
 }
 
 @Composable
@@ -108,7 +113,6 @@ fun FinishButton(
 fun LandingScreen(landingInput: LandingInput) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
             .padding(15.dp)
     ) {
         Image(

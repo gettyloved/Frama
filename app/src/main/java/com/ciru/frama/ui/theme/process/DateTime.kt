@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.icu.util.Calendar
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -28,6 +29,7 @@ import com.ciru.frama.R
 import com.ciru.frama.ui.theme.BlueWhiteDark
 import com.ciru.frama.ui.theme.FramaTheme
 import com.ciru.frama.ui.theme.Orange
+import java.time.LocalDateTime
 import java.util.*
 
 @Composable
@@ -50,10 +52,12 @@ fun DateTime() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(horizontal = 10.dp)
                 .align(Center),
             verticalArrangement = Arrangement.Center
         ) {
             PickUpDateCard()
+            Spacer(modifier = Modifier.padding(10.dp))
             PickUpTimeCard()
         }
 
@@ -91,10 +95,12 @@ fun PickUpTimeCard() {
     ) {
         Button(
             onClick = { mTimePickerDialog.show()},
-            colors = ButtonDefaults.buttonColors(backgroundColor = Orange)
+            colors = ButtonDefaults.buttonColors(backgroundColor = Orange),
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "Pickup Time", color = Color.White)
         }
+//        Text(text = "$time")
     }
 
 }
@@ -120,11 +126,13 @@ fun PickUpDateCard() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = { mDatePickerDialog.show()},
-            colors = ButtonDefaults.buttonColors(backgroundColor = Orange)
+            onClick = { mDatePickerDialog.show() },
+            colors = ButtonDefaults.buttonColors(backgroundColor = Orange),
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "Pickup Date", color = Color.White)
         }
+//        Text(text = "$date")
     }
 }
 

@@ -1,19 +1,28 @@
+@file:OptIn(ExperimentalMaterialApi::class, ExperimentalUnitApi::class)
+
 package com.ciru.frama.ui.theme.menu
 
 
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.*
 import com.ciru.frama.R
 import com.ciru.frama.ui.theme.FramaTheme
 
@@ -35,26 +44,30 @@ fun NotificationsPage() {
                Text(text = "Notifications", fontWeight = FontWeight.Bold) 
             }
             Spacer(modifier = Modifier.padding(10.dp))
-            NotificationsInfo()
+            NotificationsInfo(noteList = listOf())
         }
     }
 }
 
 @Composable
-fun NotificationsInfo() {
+fun NotificationsInfo(
+    noteList: List<NoteList>
+) {
     LazyColumn(
         contentPadding = PaddingValues(10.dp),
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ){
-        items(9){
-            NotificationsCard()
+        items(noteList.size) {
+            NotificationsCard(noteList[it])
         }
     }
 }
 
+
+
 @Composable
-fun NotificationsCard() {
+fun NotificationsCard(noteList: NoteList) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(15.dp)
@@ -64,22 +77,32 @@ fun NotificationsCard() {
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_baseline_cancel_24),
+                painter = painterResource(id = noteList.image),
                 contentDescription = "Cancelled"
             )
             Column {
                 Text(
-                    text = "Cancelled Order",
+                    text = noteList.title,
                     fontWeight = FontWeight.Bold
                 )
-                Text(text = "You've successfully cancelled your order")
+                Text(text = noteList.text)
             }
             Text(
-                text = "09 Nov",
+                text = noteList.date,
                 fontSize = 10.sp
             )
         }
         Divider(thickness = 1.dp, color = Color.Black)
+    }
+}
+
+@Composable
+fun EmptyNotification() {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Text(
+            text = "You do not have notifications",
+            modifier = Modifier.align(Alignment.Center)
+        )
     }
 }
 
@@ -88,6 +111,6 @@ fun NotificationsCard() {
 @Composable
 fun NotificationsPagePreview() {
     FramaTheme {
-       NotificationsPage()
+       EmptyNotification()
     }
 }

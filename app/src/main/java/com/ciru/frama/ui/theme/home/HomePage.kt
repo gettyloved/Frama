@@ -202,7 +202,7 @@ fun FrontPageCard(homeItems: HomeItems) {
 }
 
 
-@Preview(showSystemUi=true, showBackground = true, )
+@Preview(showBackground = true, )
 @Composable
 fun HomePagePreview(){
     HomePage()

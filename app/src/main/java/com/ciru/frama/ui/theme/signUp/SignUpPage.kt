@@ -6,14 +6,28 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ciru.frama.ui.theme.BlueWhiteDark
 import com.ciru.frama.ui.theme.FramaTheme
+import com.ciru.frama.ui.theme.Orange
 
 @Composable
 fun SignUpPage() {
     Box(modifier = Modifier.fillMaxSize()) {
+        Text(
+            text = "SIGN UP",
+            color = Orange,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp),
+            fontSize = 40.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
         Column(
             modifier = Modifier
                 .align(Alignment.Center)
@@ -23,13 +37,15 @@ fun SignUpPage() {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 20.dp)
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 20.dp)
         ) {
             Text(text = "Already have an account?")
             TextButton(
                 onClick = {  }
             ) {
-                Text(text = "LogIn")
+                Text(text = "LogIn", color = Orange)
             }
         }
     }
@@ -37,8 +53,6 @@ fun SignUpPage() {
 
 @Composable
 fun UserDetails() {
-    var userName by remember { mutableStateOf("") }
-    var phoneNumber by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     Card(
@@ -52,18 +66,6 @@ fun UserDetails() {
                 .padding(15.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            OutlinedTextField(
-                value = userName,
-                onValueChange = {userName = it},
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text(text = "UserName")}
-            )
-            OutlinedTextField(
-                value = phoneNumber,
-                onValueChange = {phoneNumber = it},
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text(text = "Phone Number")}
-            )
             OutlinedTextField(
                 value = email,
                 onValueChange = {email = it},
@@ -79,7 +81,7 @@ fun UserDetails() {
             Button(
                 onClick = {  },
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(BlueWhiteDark)
+                colors = ButtonDefaults.buttonColors(Color.Blue)
             ) {
                 Text(text = "Sign Up", color = Color.White)
             }

@@ -25,15 +25,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.ciru.frama.R
 import com.ciru.frama.ui.theme.BlueWhiteDark
 import com.ciru.frama.ui.theme.FramaTheme
 import com.ciru.frama.ui.theme.Orange
+import com.ciru.frama.ui.theme.navigation.Screen
 import java.time.LocalDateTime
 import java.util.*
 
 @Composable
-fun DateTime() {
+fun DateTime(navController: NavController) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -62,7 +64,7 @@ fun DateTime() {
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(Screen.PaymentMethod.route) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp)
@@ -142,7 +144,7 @@ fun PickUpDateCard() {
 @Composable
 fun DatePagePreview() {
     FramaTheme {
-        DateTime()
+//        DateTime(navController = remb)
     }
 }
 

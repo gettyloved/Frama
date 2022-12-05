@@ -20,14 +20,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.ciru.frama.R
 import com.ciru.frama.ui.theme.BlueWhiteDark
 import com.ciru.frama.ui.theme.FramaTheme
 import com.ciru.frama.ui.theme.LightBlueWhite
 import com.ciru.frama.ui.theme.Orange
+import com.ciru.frama.ui.theme.navigation.Screen
 
 @Composable
-fun Cart() {
+fun Cart(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -66,7 +68,7 @@ fun Cart() {
                 .align(Alignment.BottomCenter)
                 .padding(10.dp)
         ) {
-            TotalSection()
+            TotalSection(navController)
         }
     }
 }
@@ -88,7 +90,6 @@ fun CartHeading() {
         )
     }
 }
-
 
 @Composable
 fun OrderItems(cartItems:List<CartItems>) {
@@ -162,7 +163,7 @@ fun OrderItem(cartItems: CartItems) {
 }
 
 @Composable
-fun TotalSection() {
+fun TotalSection(navController: NavController) {
     Column(
         Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -213,7 +214,7 @@ fun TotalSection() {
         Spacer(modifier = Modifier.padding(10.dp))
         Button(
             onClick = {
-//                checks out. goes to the payment method
+                navController.navigate(Screen.Map.route)
             },
             modifier = Modifier
                 .fillMaxWidth(),
@@ -233,6 +234,6 @@ fun TotalSection() {
 @Composable
 fun CartPreview() {
     FramaTheme {
-        Cart()
+//        Cart()
     }
 }

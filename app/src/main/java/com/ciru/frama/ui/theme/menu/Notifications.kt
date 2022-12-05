@@ -2,32 +2,22 @@
 
 package com.ciru.frama.ui.theme.menu
 
-
-
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
-import com.ciru.frama.R
+import androidx.navigation.NavController
 import com.ciru.frama.ui.theme.FramaTheme
 
 @Composable
-fun NotificationsPage() {
+fun NotificationsPage(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()

@@ -14,8 +14,10 @@ import com.ciru.frama.R
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ciru.frama.ui.theme.FramaTheme
 import com.ciru.frama.ui.theme.Orange
+import com.ciru.frama.ui.theme.navigation.Screen
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
@@ -24,7 +26,7 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
-fun OrderMap() {
+fun OrderMap(navController: NavController) {
     val singapore = LatLng(1.35, 103.87)
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(singapore, 10f)
@@ -61,7 +63,7 @@ fun OrderMap() {
             singleLine = true
         )
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(Screen.DateTime.route) },
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
@@ -81,6 +83,6 @@ fun OrderMap() {
 @Composable
 fun OrderMapPreview() {
     FramaTheme {
-        OrderMap()
+//        OrderMap()
     }
 }

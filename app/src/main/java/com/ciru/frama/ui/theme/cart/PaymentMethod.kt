@@ -13,11 +13,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.ciru.frama.ui.theme.FramaTheme
 import com.ciru.frama.ui.theme.Orange
 
 @Composable
-fun PaymentMethod() {
+fun PaymentMethod(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -141,6 +142,6 @@ fun EmptyOrder() {
 @Composable
 fun CardPreview() {
     FramaTheme {
-        PaymentMethod()
+//        PaymentMethod()
     }
 }

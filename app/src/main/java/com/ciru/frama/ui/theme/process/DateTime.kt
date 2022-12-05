@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material.*
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -48,33 +49,12 @@ fun DateTime() {
 
         Column(
             modifier = Modifier
-                .padding(top = 150.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .align(Center),
+            verticalArrangement = Arrangement.Center
         ) {
-            Box(modifier = Modifier
-                .size(300.dp)
-                .align(CenterHorizontally)) {
-                Image(
-                    painter = painterResource(id = R.drawable.tshirt),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
-            ) {
-                PickUpDateCard()
-                PickUpTimeCard()
-            }
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                elevation = 10.dp
-            ) {
-                Text(text = "$")
-//                Text(text = )
-            }
+            PickUpDateCard()
+            PickUpTimeCard()
         }
 
         Button(

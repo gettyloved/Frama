@@ -1,4 +1,4 @@
-package com.ciru.frama.ui.screens.orders
+package com.ciru.frama.ui.theme.orders
 
 import androidx.compose.runtime.Immutable
 
